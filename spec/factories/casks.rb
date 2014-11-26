@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :cask do
     user nil
-url "MyString"
-raw_url "MyString"
-read false
-configuration false
+    sequence(:url) { |n| "http://example.com/cask#{n}" }
+    sequence(:raw_url) { |n| "http://example.com/raw/cask#{n}" }
+    read false
+    configuration false
   end
-
 end
