@@ -38,6 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'nokogiri'
+
 group :development do
   gem 'rb-readline'
   gem 'hirb'
