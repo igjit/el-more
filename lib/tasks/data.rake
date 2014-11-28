@@ -5,4 +5,11 @@ namespace :data do
       PackageUpdater.update
     end
   end
+
+  namespace :cask do
+    desc "Search on GitHub for Cask files"
+    task :update => :environment do
+      CaskUpdater.update(80)
+    end
+  end
 end
