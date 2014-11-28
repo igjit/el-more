@@ -41,6 +41,7 @@ gem 'spring',        group: :development
 gem 'nokogiri'
 gem 'redis'
 gem 'redis-objects'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'rb-readline'
