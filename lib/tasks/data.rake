@@ -13,6 +13,13 @@ namespace :data do
     end
   end
 
+  namespace :cask_dependency do
+    desc "Update package dependencies of Cask"
+    task :update => :environment do
+      CaskDependencyUpdater.update(100)
+    end
+  end
+
   namespace :user_attributes do
     desc "Update user attributes"
     task :update => :environment do
