@@ -6,6 +6,14 @@ namespace :data do
     end
   end
 
+  namespace :package_similarity do
+    desc "Calculate package similarity"
+    task :update => :environment do
+      PackageSimilarityUpdater.delete_all
+      PackageSimilarityUpdater.update
+    end
+  end
+
   namespace :cask do
     desc "Search on GitHub for Cask files"
     task :update => :environment do
