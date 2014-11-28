@@ -42,6 +42,7 @@ gem 'nokogiri'
 gem 'redis'
 gem 'redis-objects'
 gem 'bootstrap-sass'
+gem 'ransack'
 
 group :development do
   gem 'rb-readline'
