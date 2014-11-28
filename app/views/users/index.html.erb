@@ -1,8 +1,9 @@
 <div class="container">
   <div class="page-header">
     <h1>Users</h1>
-    Cask users on GitHub
+    <p class="lead">Cask users on GitHub</p>
   </div>
+
   <% @users.each do |user| %>
     <div class="media">
       <%= link_to(user, class: "media-left") do %>
@@ -12,6 +13,7 @@
         <h4 class="media-heading">
           <%= link_to user.login, user %>
         </h4>
+        <%= user.name %>
       </div>
     </div>
   <% end %>
