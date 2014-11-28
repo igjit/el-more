@@ -1,29 +1,39 @@
 <div class="container">
   <div class="page-header">
-    <h1>Package</h1>
-    <h2><%= @package.name %></h2>
-    <dl>
-      <dt>URL</dt>
-      <dd><%= link_to @package.url, @package.url %></dd>
-      <dt>Description</dt>
-      <dd><%= @package.description %></dd>
-      <dt>Similar packages</dt>
-      <dd>
-        <ul>
-          <% @similar_packages.each do |x| %>
-            <% package = x[0] %>
-            <li><%= "%0.2f" % x[1] %> <%= link_to package.name, package %></li>
+    <h1><%= @package.name %></h1>
+    <p class="lead"><%= @package.description %></p>
+  </div>
+
+  <dl>
+    <dt>URL</dt>
+    <dd><%= link_to @package.url, @package.url %></dd>
+  </dl>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Users who installed this package also installed</h3>
+      <div class="list-group">
+        <% @similar_packages.each do |x| %>
+          <% package = x[0] %>
+          <%= link_to(package, class: 'list-group-item') do %>
+            <h4 class="list-group-item-heading">
+              <%= package.name %>
+            </h4>
+            <p class="list-group-item-text">
+              <%= package.description %>
+            </p>
           <% end %>
-        </ul>
-      </dd>
-      <dt><%= @users.count %> users installed this</dt>
-      <dd>
-        <ul>
-          <% @users.each do |user| %>
-            <li><%= link_to user.login, user_path(user.id) %></li>
-          <% end %>
-        </ul>
-      </dd>
-    </dl>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Users (<%= @users.count %>)</h3>
+      <ul>
+        <% @users.each do |user| %>
+          <li><%= link_to user.login, user_path(user.id) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
