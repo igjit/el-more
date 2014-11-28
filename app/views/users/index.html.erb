@@ -1,2 +1,19 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="page-header">
+    <h1>Users</h1>
+    Cask users on GitHub
+  </div>
+  <% @users.each do |user| %>
+    <div class="media">
+      <%= link_to(user, class: "media-left") do %>
+        <%= image_tag(user.avatar_url, alt: user.login, style: "width: 48px; height: 48px;") %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to user.login, user %>
+        </h4>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @users %>
+</div>
