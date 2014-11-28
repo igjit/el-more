@@ -43,6 +43,8 @@ gem 'redis'
 gem 'redis-objects'
 gem 'bootstrap-sass'
 gem 'ransack'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :development do
   gem 'rb-readline'
