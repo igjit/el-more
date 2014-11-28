@@ -12,4 +12,14 @@ namespace :data do
       CaskUpdater.update(80)
     end
   end
+
+  namespace :user_attributes do
+    desc "Update user attributes"
+    task :update => :environment do
+      access_token = ENV['GITHUB_ACCESS_TOKEN'] or
+        raise "Environment variable GITHUB_ACCESS_TOKEN is not defined."
+
+      UserAttributesUpdater.update User.all, access_token
+    end
+  end
 end
