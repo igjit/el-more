@@ -39,6 +39,8 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'nokogiri'
+gem 'redis'
+gem 'redis-objects'
 
 group :development do
   gem 'rb-readline'
