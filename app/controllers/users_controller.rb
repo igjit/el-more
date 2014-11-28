@@ -6,5 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @packages = @user.casks.first.packages
   end
 end
