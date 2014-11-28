@@ -1,8 +1,9 @@
 class PackagesController < ApplicationController
+  PER = 20
   WORD_LIMIT = 5
 
   def index
-    @packages = Package.popular
+    @packages = Package.page(params[:page]).per(PER).popular
 
     if params[:q]
       words = tokenize(params[:q]).uniq.take(WORD_LIMIT)
