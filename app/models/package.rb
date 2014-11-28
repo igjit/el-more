@@ -10,6 +10,12 @@ class Package < ActiveRecord::Base
 
   sorted_set :similarity
 
+  scope :popular, -> {
+    select('packages.*, COUNT(packages.id) AS count_packages')
+      .joins(:cask_packages)
+      .group('packages.id')
+      .order('count_packages DESC') }
+
   def similar_packages(limit: nil)
     end_index = limit.nil? ? -1 : limit - 1
 

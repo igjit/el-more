@@ -1,2 +1,23 @@
-<h1>Packages#index</h1>
-<p>Find me in app/views/packages/index.html.erb</p>
+<div class="container">
+  <div class="page-header">
+    <h1>Packages</h1>
+  </div>
+  <%= form_tag '/packages', :method => 'get' do %>
+    <div class="form-group form-inline">
+      <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: "keywords" %>
+      <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+  <div class="list-group">
+    <% @packages.each do |package| %>
+      <%= link_to(package, class: 'list-group-item') do %>
+        <h4 class="list-group-item-heading">
+          <%= package.name %>
+        </h4>
+        <p class="list-group-item-text">
+          <%= package.description %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
