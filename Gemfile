@@ -45,6 +45,7 @@ gem 'bootstrap-sass'
 gem 'ransack'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'google-analytics-turbolinks'
 
 group :development do
   gem 'rb-readline'
