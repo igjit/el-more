@@ -14,7 +14,7 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     @similar_packages = @package.similar_packages(limit: 20)
-    @users = @package.casks.select('users.*').joins(:user)
+    @users = @package.casks.select('users.*').uniq.joins(:user)
       .order('users.followers DESC').to_a
   end
 
