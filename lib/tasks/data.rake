@@ -26,6 +26,11 @@ namespace :data do
     task :update => :environment do
       CaskDependencyUpdater.update(100)
     end
+
+    desc "Delete package dependencies of all Cask"
+    task :delete => :environment do
+      CaskDependencyUpdater.delete_all
+    end
   end
 
   namespace :user_attributes do
