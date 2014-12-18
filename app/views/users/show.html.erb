@@ -15,6 +15,13 @@
     <dd><%= link_to @user.url, @user.url %></dd>
   </dl>
 
+  <h3>Cask file</h3>
+  <ul>
+    <% @casks.each do |cask| %>
+      <li><%= link_to cask.path, cask.url %></li>
+    <% end %>
+  </ul>
+
   <h3>Packages (<%= @packages.count %>)</h3>
   <ul>
     <% @packages.each do |package| %>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @casks = @user.casks.where(configuration: true)
     @packages = @user.casks.first.packages
   end
 end

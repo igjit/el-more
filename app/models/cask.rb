@@ -5,4 +5,8 @@ class Cask < ActiveRecord::Base
 
   validates :url, presence: true
   validates :raw_url, presence: true
+
+  def path
+    URI(url).path.split('/').values_at(2, 5..-1).join('/')
+  end
 end
