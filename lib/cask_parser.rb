@@ -8,7 +8,7 @@ class CaskParser
   end
 
   def configuration?
-    !@text.match(/\(\s*package/)
+    !@text.match(/\(\s*(?:package|development)/)
   end
 
   def dependencies
