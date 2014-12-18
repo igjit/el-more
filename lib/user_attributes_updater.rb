@@ -12,7 +12,7 @@ module UserAttributesUpdater
         update_user!(user, access_token: access_token)
       rescue => e
         # TODO: Retry
-        warn "Update failed. #{user} #{e}"
+        warn "Update failed. #{user.inspect} #{e}"
       end
       sleep 10 unless access_token
     end
