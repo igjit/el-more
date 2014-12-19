@@ -6,7 +6,13 @@
 
   <dl>
     <dt>URL</dt>
-    <dd><%= link_to @package.url, @package.url %></dd>
+    <dd>
+      <% if @package.url %>
+        <%= link_to @package.url, @package.url %>
+      <% else %>
+        (<%= @package.repo_type %>)
+      <% end %>
+    </dd>
   </dl>
 
   <div class="row">
