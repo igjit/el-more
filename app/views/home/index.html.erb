@@ -2,25 +2,9 @@
   <h1>el-more <small>Emacs Lisp Packages, more!</small></h1>
   <p class="lead">Find Emacs Lisp Packages you'll love.</p>
 </div>
-
-<%= form_tag '/packages', :method => 'get' do %>
-  <div class="form-group form-inline">
-    <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: "keywords" %>
-    <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
-  </div>
-<% end %>
-
+<%= render 'packages/search' %>
 <h3>Popular packages</h3>
 <div class="list-group">
-  <% @packages.each do |package| %>
-    <%= link_to(package, class: 'list-group-item') do %>
-      <h4 class="list-group-item-heading">
-        <%= package.name %>
-      </h4>
-      <p class="list-group-item-text">
-        <%= package.description %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= render @packages %>
 </div>
 <%= link_to 'More', packages_path, class: 'btn btn-primary' %>
