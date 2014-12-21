@@ -19,8 +19,7 @@
     <div class="col-md-8">
       <h3>Users who installed this package also installed</h3>
       <div class="list-group">
-        <% @similar_packages.each do |x| %>
-          <% package = x[0] %>
+        <% @similar_packages.each do |package, similarity| %>
           <%= link_to(package, class: 'list-group-item') do %>
             <h4 class="list-group-item-heading">
               <%= package.name %>
@@ -28,6 +27,10 @@
             <p class="list-group-item-text">
               <%= package.description %>
             </p>
+            <div class="list-stats">
+              <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+              <%= sprintf "%0.2f", similarity %>
+            </div>
           <% end %>
         <% end %>
       </div>
