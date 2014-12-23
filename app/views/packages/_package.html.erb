@@ -5,4 +5,10 @@
   <p class="list-group-item-text">
     <%= package.description %>
   </p>
+  <% if package.count_packages %>
+    <div class="list-stats">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= package.count_packages %>
+    </div>
+  <% end %>
 <% end %>
