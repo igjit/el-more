@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Cask, :type => :model do
   it { should belong_to(:user) }
+  it { should have_many(:cask_packages).dependent(:delete_all) }
   it { should have_many(:packages).through(:cask_packages) }
   it { should validate_presence_of(:url) }
   it { should validate_presence_of(:raw_url) }

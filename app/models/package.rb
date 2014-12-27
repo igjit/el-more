@@ -2,7 +2,7 @@ class Package < ActiveRecord::Base
   include Redis::Objects
 
   belongs_to :cask
-  has_many :cask_packages
+  has_many :cask_packages, dependent: :delete_all
   has_many :casks, through: :cask_packages
 
   validates :name, presence: true
