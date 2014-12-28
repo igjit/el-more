@@ -1,4 +1,9 @@
 namespace :data do
+  def ensure_github_access_token
+    ENV['GITHUB_ACCESS_TOKEN'] or
+      raise "Environment variable GITHUB_ACCESS_TOKEN is not defined."
+  end
+
   namespace :package do
     desc "Fetch MELPA package information"
     task :update => :environment do
@@ -43,10 +48,26 @@ namespace :data do
   namespace :user_attributes do
     desc "Update user attributes"
     task :update => :environment do
-      access_token = ENV['GITHUB_ACCESS_TOKEN'] or
-        raise "Environment variable GITHUB_ACCESS_TOKEN is not defined."
-
+      access_token = ensure_github_access_token
       UserAttributesUpdater.update User.all, access_token
+    end
+  end
+
+  namespace :all do
+    desc "Update all data"
+    task :update => :environment do
+      tasks = %w(data:package:update
+                 data:cask:update
+                 data:user_attributes:update
+                 data:cask_dependency:update
+                 data:package_similarity:update)
+
+      ensure_github_access_token
+
+      tasks.each do |task|
+        puts "Task: #{task}"
+        Rake::Task[task].invoke
+      end
     end
   end
 end
