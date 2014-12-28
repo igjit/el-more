@@ -16,8 +16,15 @@ namespace :data do
 
   namespace :cask do
     desc "Search on GitHub for Cask files"
-    task :update => :environment do
+    task :initial_import => :environment do
       CaskUpdater.update(80)
+    end
+
+    desc "Search on GitHub for recently updated Cask files"
+    task :update => :environment do
+      require 'cask_updater'
+      search = GithubCodeSearch.new(CaskUpdater::DEFAULT_QUERY, sort: :indexed)
+      CaskUpdater.update(5, search: search)
     end
   end
 
