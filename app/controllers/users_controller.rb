@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @casks = @user.casks.where(configuration: true)
-    @packages = @user.casks.first.packages
+    @packages = Package.uniq.joins(:casks).where('casks.id' => @casks).order(:name)
   end
 end
