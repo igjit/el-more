@@ -1,15 +1,16 @@
-<div class="page-header">
+<div>
   <h1>el-more <small>Emacs Lisp Packages, more!</small></h1>
   <p class="lead">Find Emacs Lisp Packages you'll love.</p>
 </div>
 <%= render 'packages/search' %>
-<h3>Popular packages</h3>
+
+<h3 class="page-header">Popular packages</h3>
 <div class="list-group">
   <%= render @packages %>
 </div>
 <%= link_to 'More', packages_path, class: 'btn btn-primary' %>
 
-<h3>Recently added packages</h3>
+<h3 class="page-header">Recently added packages</h3>
 <div class="list-group">
   <%= render @new_packages %>
 </div>
