@@ -8,3 +8,8 @@
   <%= render @packages %>
 </div>
 <%= link_to 'More', packages_path, class: 'btn btn-primary' %>
+
+<h3>Recently added packages</h3>
+<div class="list-group">
+  <%= render @new_packages %>
+</div>

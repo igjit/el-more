@@ -16,6 +16,12 @@ class Package < ActiveRecord::Base
       .group('packages.id')
       .order('count_packages DESC') }
 
+  scope :added_after, ->(time) {
+    popular
+      .where('packages.created_at > ?', time)
+      .having('COUNT(packages.id) > ?', 1)
+      .reorder('created_at DESC') }
+
   def similar_packages(limit: nil)
     end_index = limit.nil? ? -1 : limit - 1
 
