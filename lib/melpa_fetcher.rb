@@ -3,8 +3,8 @@ require 'json'
 
 class MelpaFetcher
   def initialize
-    @recipes = JSON(read_text('http://melpa.milkbox.net/recipes.json'))
-    @archive = JSON(read_text('http://melpa.milkbox.net/archive.json'))
+    @recipes = JSON(read_text('http://melpa.org/recipes.json'))
+    @archive = JSON(read_text('http://melpa.org/archive.json'))
   end
 
   def packages
