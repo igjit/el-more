@@ -1,3 +1,4 @@
+<% provide(:title, @user.name.blank? ? @user.login : "#{@user.login} (#{@user.name})") %>
 <div class="container">
   <div class="page-header">
     <h1>
