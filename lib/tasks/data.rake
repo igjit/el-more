@@ -28,8 +28,7 @@ namespace :data do
     desc "Search on GitHub for recently updated Cask files"
     task :update => :environment do
       require 'cask_updater'
-      search = GithubCodeSearch.new(CaskUpdater::DEFAULT_QUERY, sort: :indexed)
-      CaskUpdater.update(5, search: search)
+      CaskUpdater.update(5, search: CaskUpdater::SEARCH_RECENTLY_INDEXED)
     end
   end
 

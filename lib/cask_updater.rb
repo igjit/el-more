@@ -4,10 +4,13 @@ module CaskUpdater
   module_function
 
   DEFAULT_QUERY = "filename:cask depends-on size:<100000"
+  SEARCH_BEST_MATCH = GithubCodeSearch.new(DEFAULT_QUERY)
+  SEARCH_RECENTLY_INDEXED = GithubCodeSearch.new(DEFAULT_QUERY, sort: :indexed)
+
   INTERVAL = 10
 
   def update(page_count, search: nil)
-    search ||= GithubCodeSearch.new(DEFAULT_QUERY)
+    search ||= SEARCH_BEST_MATCH
 
     (1..page_count).each do |page|
       save_search_result!(search, page)
