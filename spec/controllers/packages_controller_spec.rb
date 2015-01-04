@@ -11,7 +11,8 @@ RSpec.describe PackagesController, :type => :controller do
 
   describe "GET show" do
     it "returns http success" do
-      get :show
+      package = create(:package)
+      get :show, id: package
       expect(response).to have_http_status(:success)
     end
   end
