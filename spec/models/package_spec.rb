@@ -8,8 +8,6 @@ RSpec.describe Package, :type => :model do
 
   describe '#similar_packages' do
     before :each do
-      Redis.current.flushdb
-
       @package_a = create(:package)
       @package_b = create(:package)
       @package_c = create(:package)

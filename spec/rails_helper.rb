@@ -55,6 +55,11 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  redis_works = Redis.current.ping rescue nil
+  config.before(:each) do
+    Redis.current.flushdb if redis_works
+  end
+
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
