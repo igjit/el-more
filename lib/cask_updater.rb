@@ -34,8 +34,8 @@ module CaskUpdater
 
     url = item[:code][:url]
     unless Cask.exists?(url: url)
-      outdated_casks = Cask.where("url LIKE ?", url.sub(%r{/blob/\S{40}/}, '/blob/%/'))
-      outdated_casks.destroy_all
+      old_casks = Cask.where("url LIKE ?", url.sub(%r{/blob/\S{40}/}, '/blob/%/'))
+      old_casks.destroy_all
 
       cask = Cask.create!(item[:code])
       user.casks << cask
