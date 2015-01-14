@@ -41,4 +41,8 @@ module CaskUpdater
       user.casks << cask
     end
   end
+
+  def delete_outdated_casks
+    Cask.where(configuration: [false, nil]).where("updated_at < ?", 1.month.ago).destroy_all
+  end
 end
