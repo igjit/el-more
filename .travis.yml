@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.1.5
+  - 2.2.0
+services:
+  - redis-server
+cache: bundler
+bundler_args: --without production
+before_script:
+  - bundle exec rake db:create db:migrate RAILS_ENV=test
+script:
+  - bundle exec rspec spec
